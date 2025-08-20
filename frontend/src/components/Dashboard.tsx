@@ -243,6 +243,7 @@ const Dashboard = () => {
                   )}
                 </Button>
               </CardContent>
+            </Card>
 
             {/* DBISAM Import Card */}
             <Card className="bg-gradient-card shadow-card border-border transition-smooth hover:shadow-elegant">
@@ -268,12 +269,7 @@ const Dashboard = () => {
             </Card>
           </div>
 
-          {/* Status Data Display */}
-
-              </CardContent>
-            </Card>
-
-            {/* ZATCA Process Card */}
+          {/* ZATCA Process Card */}
             <Card className="bg-gradient-card shadow-card border-border transition-smooth hover:shadow-elegant">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-3">

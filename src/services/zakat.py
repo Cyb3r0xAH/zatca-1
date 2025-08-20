@@ -9,6 +9,7 @@ from uuid import uuid4
 import httpx
 from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 
 from src.core.config import Config
 from src.db.models.invoices import Invoice, InvoiceStatus
@@ -18,6 +19,7 @@ class ZakatService:
     async def process_pending(self, session: AsyncSession, limit: int = 50, simulate: bool = True) -> dict[str, int]:
         stmt = (
             select(Invoice)
+            .options(selectinload(Invoice.items))
             .where(Invoice.status == InvoiceStatus.PENDING)
             .limit(limit)
         )

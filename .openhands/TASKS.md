@@ -1,21 +1,19 @@
 # Task List
 
-1. ✅ Confirm repository structure and requirements
-No src/test folder. Existing FastAPI backend, React frontend. CSV import and stats endpoints exist. ZATCA upload stub present.
-2. ✅ Create feature branch for changes
-Created feat/zakat-integration
-3. 🔄 Implement ZakatService to build/sign XML and process pending invoices
-Added src/services/zakat.py; extended Invoice model with ZATCA fields; added /api/invoices/zakat/process endpoint and schemas.
-4. ✅ Update API schemas and invoices router to expose /invoices/zakat/upload
-Replaced with /invoices/zakat/process supporting simulate flag and limit.
-5. ✅ Add frontend button to trigger ZATCA upload and display results
-Dashboard now has 'معالجة زاتكا' card calling POST /api/invoices/zakat/process?simulate=true.
-6. 🔄 Add basic tests for endpoints and services (skipped without DB)
-Added tests/test_invoices.py with basic API tests using in-memory sqlite.
-7. ✅ Update backend and frontend READMEs with instructions
-Updated both READMEs with new endpoint and instructions.
-8. ⏳ Run quick lint/build frontend, run backend smoke, verify endpoints
-
-9. ⏳ Commit and push changes to new branch
-
+1. ✅ Explore repository, locate requirements (src/test) and current implementations
+No src/test folder found. Requirements inferred from existing code, tests, and user context.
+2. ✅ Fix backend test suite failures
+Adjusted tests to mock DB/service methods, fixed TestClient usage, added selectinload to avoid lazy-load issues. All tests pass.
+3. ✅ Clean frontend Dashboard stray JSX and validate build basics
+Removed stray 'Status Data Display' block and closed Card properly.
+4. ✅ Ensure dependencies include httpx
+Added httpx==0.28.1 to requirements.txt
+5. ✅ Align Alembic migration with Invoice model fields (invoice_number, vat_number, seller_taxes, ZATCA fields, lowercase enum)
+Added new migration 8f2c0c3e1aa9 to alter invoices table and enum.
+6. ✅ Verify importer only inserts invoices whose rec_no not in DB
+ImportService checks existence by invoice_number; OK.
+7. ⏳ Document backend/frontend (README) and endpoints
+Ensure README mentions count/stats and ZATCA process. Update if needed.
+8. ⏳ Commit changes and push to a feature branch
+Commit with co-author, push to remote branch.
 
