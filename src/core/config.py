@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     FILES_PATH: str = "/data/files"
 
     # ZATCA Integration
-    ZATCA_ENDPOINT: AnyHttpUrl | None = None
+    ZATCA_ENDPOINT: str | None = None
     ZATCA_CLIENT_ID: str | None = None
     ZATCA_CLIENT_SECRET: str | None = None
     ZATCA_CERT_B64: str | None = None
