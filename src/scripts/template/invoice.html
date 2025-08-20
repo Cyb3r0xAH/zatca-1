@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid #000;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        header h2 {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        header p {
+            font-size: 20px;
+            margin: 5px 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        main div {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        .summary,
+        #table,
+        #info {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        .summary div {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            padding: 10px 0;
+        }
+
+        .summary span {
+            font-weight: bold;
+        }
+
+        .qr-code img {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body lang="ar">
+    <header>
+        <h1>فاتورة ضريبية مبسطة</h1>
+        <p>رقم الفاتورة: {{invoice.number}}</p>
+        <h2>{{store.name}}</h2>
+        <h2>{{store.address}}</h2>
+    </header>
+
+    <main>
+        <div id="info">
+            <p>تاريخ: {{invoice.date}}</p>
+            <p>رقم تسجيل ضريبة القيمة المضافة: {{store.vat_number}} </p>
+            <p>رقم الحساب: {{store.seller_number}}</p>
+        </div>
+
+        <div id="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>المنتجات</th>
+                        <th>الكمية</th>
+                        <th>سعر الوحدة</th>
+                        <th>السعي</th>
+                        <th>السعر شامل ضريبة القيمة المضافة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ "%.2f"|format(item.price) }}</td>
+                            <td>{{ "%.2f"|format(item.tax) }}</td>
+                            <td>{{ "%.2f"|format(item.total) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary">
+            <div>
+                <span>اجمالي المبلغ الخاضع للضريبة</span>
+                <span>{{price.total}}</span>
+            </div>
+            <div>
+                <span>ضريبة القيمة المضافة (15%)</span>
+                <span>{{price.taxes}}</span>
+            </div>
+            <div>
+                <span>المجموع مع الضريبة (15%)</span>
+                <span>{{price.net_total}}</span>
+            </div>
+        </div>
+
+        <div class="qr-code">
+            <img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code">
+        </div>
+    </main>
+</body>
+</html>
