@@ -8,9 +8,9 @@
 
 4. ✅ Fix identified bugs in backend routes
 
-5. 🔄 Read /docs files to understand Zakat invoice requirements
+5. ✅ Read /docs files to understand Zakat invoice requirements
 
-6. ⏳ Review current system against Zakat requirements
+6. 🔄 Review current system against Zakat requirements
 
 7. ⏳ Create scripts to generate invoices with XML, encryption, and PostgreSQL storage
 

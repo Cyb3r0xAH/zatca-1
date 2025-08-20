@@ -1,0 +1,175 @@
+{
+  "export_timestamp": 21319.376638954,
+  "pending_invoices": [
+    {
+      "id": "a0ca45eb-43a6-4b6c-843b-791a209ef6f9",
+      "invoice_number": "INV-20250820-0005",
+      "store_name": "شــركــة الـسـلـوم والــغيث لتسويق الـتـمـور",
+      "customer": "عميل رقم 5",
+      "date": "2025-08-20T10:35:47.495996+00:00",
+      "total": 480.0,
+      "taxes": 72.0,
+      "net_total": 552.0,
+      "status": "pending",
+      "zatca_uuid": null,
+      "zatca_xml_hash": "a855a4b4fde023884511f8b4714e1ca777b1e070898b9edb50508ff94aba7830",
+      "submitted_at": null,
+      "last_error": null,
+      "items_count": 1,
+      "items": [
+        {
+          "name": "تمور خلاص",
+          "quantity": 8,
+          "price": 60.0,
+          "tax": 72.0
+        }
+      ]
+    },
+    {
+      "id": "13c134de-0e3a-457c-ae68-de7ac5407a44",
+      "invoice_number": "INV-20250820-0004",
+      "store_name": "شــركــة الـسـلـوم والــغيث لتسويق الـتـمـور",
+      "customer": "عميل رقم 4",
+      "date": "2025-08-20T10:35:47.339879+00:00",
+      "total": 1355.0,
+      "taxes": 203.25,
+      "net_total": 1558.25,
+      "status": "pending",
+      "zatca_uuid": null,
+      "zatca_xml_hash": "83552ad376abc13129a7a2e181eef46dba70680266dbd14cad03d4c997b910f8",
+      "submitted_at": null,
+      "last_error": null,
+      "items_count": 3,
+      "items": [
+        {
+          "name": "تمور صقعي",
+          "quantity": 5,
+          "price": 75.0,
+          "tax": 56.25
+        },
+        {
+          "name": "تمور خلاص",
+          "quantity": 8,
+          "price": 60.0,
+          "tax": 72.0
+        },
+        {
+          "name": "تمور مجدول",
+          "quantity": 10,
+          "price": 50.0,
+          "tax": 75.0
+        }
+      ]
+    },
+    {
+      "id": "28169bc3-280b-4cf6-a204-c1d560f5b0b9",
+      "invoice_number": "INV-20250820-0003",
+      "store_name": "شــركــة الـسـلـوم والــغيث لتسويق الـتـمـور",
+      "customer": "عميل رقم 3",
+      "date": "2025-08-20T10:35:47.183479+00:00",
+      "total": 375.0,
+      "taxes": 56.25,
+      "net_total": 431.25,
+      "status": "pending",
+      "zatca_uuid": null,
+      "zatca_xml_hash": "4c694ac986d61db022da1e2dfafa0bb01e3aca932c141d64081274e05e9ecec1",
+      "submitted_at": null,
+      "last_error": null,
+      "items_count": 1,
+      "items": [
+        {
+          "name": "تمور صقعي",
+          "quantity": 5,
+          "price": 75.0,
+          "tax": 56.25
+        }
+      ]
+    }
+  ],
+  "processed_invoices": [
+    {
+      "id": "2a22bd14-e029-4847-939a-f06488bc1ac6",
+      "invoice_number": "8",
+      "store_name": "Test Store",
+      "customer": "صالح",
+      "date": "2025-07-19T00:00:00+00:00",
+      "total": 322218.08,
+      "taxes": 22555.27,
+      "net_total": 296279.52,
+      "status": "done",
+      "zatca_uuid": "068cb40e-304f-4e64-90e8-61bfda3ba590",
+      "zatca_xml_hash": "3f0818cd984e21113ca7c43f52fc7f16758c581885fc914cd0899548fa62087e",
+      "submitted_at": "2025-08-20T10:36:45.189269+00:00",
+      "last_error": null,
+      "items_count": 1,
+      "items": [
+        {
+          "name": "28.0",
+          "quantity": 968,
+          "price": 21.0,
+          "tax": 22555.27
+        }
+      ]
+    },
+    {
+      "id": "55c990a8-86cc-4de6-84ed-a6b7aac8e8d0",
+      "invoice_number": "7",
+      "store_name": "Test Store",
+      "customer": "صالح",
+      "date": "2025-07-19T00:00:00+00:00",
+      "total": 13097.09,
+      "taxes": 916.8,
+      "net_total": 12042.77,
+      "status": "done",
+      "zatca_uuid": "abcfa298-aee5-4371-8e27-f94c53f68dac",
+      "zatca_xml_hash": "fba5d0ba2ea5c14930261008e42a890115618048f184e627d9d00de6e107eb23",
+      "submitted_at": "2025-08-20T10:36:45.187888+00:00",
+      "last_error": null,
+      "items_count": 1,
+      "items": [
+        {
+          "name": "15.0",
+          "quantity": 16,
+          "price": 9.0,
+          "tax": 916.8
+        }
+      ]
+    },
+    {
+      "id": "0c7fb9e1-747d-4df4-ad59-23ff2a331f8a",
+      "invoice_number": "6",
+      "store_name": "Test Store",
+      "customer": "مكتبي",
+      "date": "2025-07-19T00:00:00+00:00",
+      "total": 13097.09,
+      "taxes": 916.8,
+      "net_total": 12042.77,
+      "status": "done",
+      "zatca_uuid": "722281c5-1b0c-4441-8831-265ff0046478",
+      "zatca_xml_hash": "0c9f4c739d1c2a052912550a3cae54e6e9a8dc49f0dd66be92a14c241b2d7420",
+      "submitted_at": "2025-08-20T10:36:45.185924+00:00",
+      "last_error": null,
+      "items_count": 1,
+      "items": [
+        {
+          "name": "15.0",
+          "quantity": 16,
+          "price": 9.0,
+          "tax": 916.8
+        }
+      ]
+    }
+  ],
+  "sample_xml": {
+    "8": {
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Invoice xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n         xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">\n  <cbc:ID>8</cbc:ID>\n  <cbc:UUID>2a22bd14-e029-4847-939a-f06488bc1ac6</cbc:UUID>\n  <cbc:IssueDate>2025-07-19</cbc:IssueDate>\n  <cbc:TaxTotal>22555.27</cbc:TaxTotal>\n  <cbc:LegalMonetaryTotal>296279.52</cbc:LegalMonetaryTotal>\n  <cac:AccountingSupplierParty>\n    <cbc:Name>Test Store</cbc:Name>\n    <cbc:CompanyID>123456789012345</cbc:CompanyID>\n  </cac:AccountingSupplierParty>\n  <cac:AccountingCustomerParty>\n    <cbc:Name>2010347</cbc:Name>\n  </cac:AccountingCustomerParty>\n  <cac:InvoiceLine><cbc:ID>11ecf224-fb24-4bce-bbf0-1a0f3cabd046</cbc:ID><cbc:InvoicedQuantity>968</cbc:InvoicedQuantity><cbc:LineExtensionAmount>21.00</cbc:LineExtensionAmount></cac:InvoiceLine>\n</Invoice>",
+      "hash": "3f0818cd984e21113ca7c43f52fc7f16758c581885fc914cd0899548fa62087e",
+      "uuid": "068cb40e-304f-4e64-90e8-61bfda3ba590"
+    },
+    "7": {
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Invoice xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n         xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\">\n  <cbc:ID>7</cbc:ID>\n  <cbc:UUID>55c990a8-86cc-4de6-84ed-a6b7aac8e8d0</cbc:UUID>\n  <cbc:IssueDate>2025-07-19</cbc:IssueDate>\n  <cbc:TaxTotal>916.80</cbc:TaxTotal>\n  <cbc:LegalMonetaryTotal>12042.77</cbc:LegalMonetaryTotal>\n  <cac:AccountingSupplierParty>\n    <cbc:Name>Test Store</cbc:Name>\n    <cbc:CompanyID>123456789012345</cbc:CompanyID>\n  </cac:AccountingSupplierParty>\n  <cac:AccountingCustomerParty>\n    <cbc:Name>2010018</cbc:Name>\n  </cac:AccountingCustomerParty>\n  <cac:InvoiceLine><cbc:ID>9cab3778-09ae-407a-941b-74cf695c4e08</cbc:ID><cbc:InvoicedQuantity>16</cbc:InvoicedQuantity><cbc:LineExtensionAmount>9.00</cbc:LineExtensionAmount></cac:InvoiceLine>\n</Invoice>",
+      "hash": "fba5d0ba2ea5c14930261008e42a890115618048f184e627d9d00de6e107eb23",
+      "uuid": "abcfa298-aee5-4371-8e27-f94c53f68dac"
+    }
+  }
+}
