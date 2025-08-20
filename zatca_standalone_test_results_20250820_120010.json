@@ -1,0 +1,7 @@
+{
+  "test_suite": "ZATCA Standalone Tests",
+  "timestamp": "2025-08-20T12:00:10.782563",
+  "zatca_manual_version": "3.0",
+  "tests": [],
+  "error": "error parsing asn1 value: ParseError { kind: InvalidValue, location: [4, 0, \"AttributeTypeValue::value\", \"AttributeValue::PrintableString\"] }"
+}
