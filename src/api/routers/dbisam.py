@@ -10,7 +10,6 @@ importer = DBISAMImportService()
 @router.post('/import')
 async def import_dbisam(session: AsyncSession = Depends(get_dbisam_session)) -> dict:
     try:
-        # ensure tables exist in the separate DB
         await init_dbisam()
         stats = await importer.import_all(session)
         return stats

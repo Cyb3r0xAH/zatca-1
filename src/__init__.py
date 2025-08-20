@@ -46,7 +46,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-api_prefix = f"{prefix}{api_str}"
+api_prefix = f"/api"
 app.include_router(health.router, prefix=api_prefix)
 app.include_router(invoices.router, prefix=api_prefix)
 app.include_router(dbisam.router, prefix=api_prefix)
