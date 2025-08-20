@@ -29,7 +29,7 @@ Main endpoints:
 - POST /api/invoices/import  -> import invoices from src/scripts/data (inserts only new RecNo)
 - GET  /api/invoices/stats   -> status map {pending, in_progress, done, failed}
 - GET  /api/invoices/count?status=pending -> single status count
-- POST /api/invoices/zakat/upload -> stub returns {status:"not_implemented"}
+- POST /api/invoices/zakat/process -> processes PENDING invoices: build XML, base64+hash, simulate upload (or real if ZATCA_ENDPOINT set)
 
 2) Frontend
 From frontend/ directory:
@@ -47,7 +47,7 @@ Optional DBISAM import
   You can wire an endpoint later to run it on demand.
 
 Testing
-- Add tests under tests/ using pytest + httpx (not included yet)
+- pytest is configured; run pytest to execute tests under tests/
 
 Notes
 - CORS enabled for development

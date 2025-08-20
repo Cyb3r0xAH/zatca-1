@@ -2,15 +2,17 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel.ext.asyncio.session import AsyncSession
 from typing import Dict
 from src.db.models.invoices import InvoiceStatus
-from src.schemas.invoices import CountOut, ZakatUploadResult, ImportResult
+from src.schemas.invoices import CountOut, ZakatUploadResult, ImportResult, ZakatProcessResult
 from src.db.session import get_session
 from src.services.invoice import InvoicesServices
 from src.services.importer import ImportService
+from src.services.zakat import ZakatService
 
 router = APIRouter(prefix='/invoices', tags=['Invoices'])
 
 invoices_services = InvoicesServices()
 import_service = ImportService()
+zakat_service = ZakatService()
 
 @router.get('/count', response_model=CountOut)
 async def fetch_invoice_count(
@@ -32,6 +34,9 @@ async def import_invoices(session: AsyncSession = Depends(get_session)) -> Dict[
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.post('/zakat/upload', response_model=ZakatUploadResult)
-async def upload_to_zakat() -> Dict[str, str]:
-    return {"status": "not_implemented"}
+@router.post('/zakat/process', response_model=ZakatProcessResult)
+async def zakat_process(limit: int = Query(50), simulate: bool = Query(True), session: AsyncSession = Depends(get_session)) -> Dict[str, int]:
+    try:
+        return await zakat_service.process_pending(session, limit=limit, simulate=simulate)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

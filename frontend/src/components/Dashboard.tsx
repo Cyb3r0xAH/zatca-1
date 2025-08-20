@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Download, CheckCircle, LogOut, Activity, BarChart3, Database } from "lucide-react";
+import { Download, CheckCircle, LogOut, Activity, BarChart3, Database, Upload } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 
@@ -53,6 +53,21 @@ const Dashboard = () => {
     }
   };
 
+
+
+  const handleZakatProcess = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch('/api/invoices/zakat/process?simulate=true', { method: 'POST' });
+      if (!res.ok) throw new Error('failed');
+      const data = await res.json() as { processed: number; success: number; failed: number };
+      toast({ title: 'تمت المعالجة نحو زاتكا (محاكاة)', description: `المعالَجة: ${data.processed} | نجاح: ${data.success} | فشل: ${data.failed}` });
+    } catch (e) {
+      toast({ variant: 'destructive', title: 'فشل معالجة زاتكا', description: 'تحقق من الخادم والإعدادات' });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleCheckStatus = async () => {
     setIsLoading(true);
@@ -254,6 +269,33 @@ const Dashboard = () => {
           </div>
 
           {/* Status Data Display */}
+
+              </CardContent>
+            </Card>
+
+            {/* ZATCA Process Card */}
+            <Card className="bg-gradient-card shadow-card border-border transition-smooth hover:shadow-elegant">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-3">
+                  <Upload className="w-6 h-6 text-muted-foreground" />
+                  <span>معالجة زاتكا</span>
+                </CardTitle>
+                <CardDescription>
+                  توليد ورفع XML (محاكاة حالياً)
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button
+                  onClick={handleZakatProcess}
+                  disabled={isLoading}
+                  variant="secondary"
+                  className="w-full h-12 transition-bounce disabled:opacity-50"
+                >
+                  تشغيل معالجة زاتكا
+                </Button>
+              </CardContent>
+            </Card>
+
           {statusData && (
             <div className="grid md:grid-cols-2 gap-6">
               {/* Numbers Card */}

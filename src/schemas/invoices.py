@@ -43,3 +43,8 @@ class ImportResult(BaseModel):
 
 class ZakatUploadResult(BaseModel):
     status: str
+
+class ZakatProcessResult(BaseModel):
+    processed: int
+    success: int
+    failed: int
