@@ -1,6 +1,7 @@
 # src/services/invoice.py
 from sqlalchemy import select, func
 from sqlmodel.ext.asyncio.session import AsyncSession
+from typing import List
 from src.db.models.invoices import Invoice, InvoiceStatus
 
 class InvoicesServices:
@@ -15,3 +16,11 @@ class InvoicesServices:
         for st in InvoiceStatus:
             counts[st.value] = await self.get_invoice_count_by_status(session, st)
         return counts
+
+    async def get_invoices(self, session: AsyncSession, limit: int = 10, offset: int = 0, status: InvoiceStatus | None = None) -> List[Invoice]:
+        stmt = select(Invoice)
+        if status:
+            stmt = stmt.where(Invoice.status == status)
+        stmt = stmt.offset(offset).limit(limit).order_by(Invoice.created_at.desc())
+        result = await session.execute(stmt)
+        return list(result.scalars().all())

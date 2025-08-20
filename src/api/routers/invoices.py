@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlmodel.ext.asyncio.session import AsyncSession
-from typing import Dict
-from src.db.models.invoices import InvoiceStatus
+from typing import Dict, List
+from src.db.models.invoices import InvoiceStatus, Invoice
 from src.schemas.invoices import CountOut, ZakatUploadResult, ImportResult, ZakatProcessResult
 from src.db.session import get_session
 from src.services.invoice import InvoicesServices
@@ -25,6 +25,15 @@ async def fetch_invoice_count(
 @router.get('/stats', response_model=dict[str, int])
 async def fetch_invoice_stats(session: AsyncSession = Depends(get_session)) -> Dict[str, int]:
     return await invoices_services.get_all_status_counts(session)
+
+@router.get('/', response_model=List[Invoice])
+async def list_invoices(
+    limit: int = Query(10, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+    status: InvoiceStatus | None = Query(None),
+    session: AsyncSession = Depends(get_session)
+) -> List[Invoice]:
+    return await invoices_services.get_invoices(session, limit=limit, offset=offset, status=status)
 
 @router.post('/import', response_model=ImportResult)
 async def import_invoices(session: AsyncSession = Depends(get_session)) -> Dict[str, int]:
