@@ -48,7 +48,7 @@ class ZakatService:
                     await session.flush()
                     success += 1
                 else:
-                    ok, msg, remote_id = await self.upload_xml(enc_xml)
+                    ok, msg, remote_id = await self.upload_xml(enc_xml, xml_hash, str(inv.id))
                     if ok:
                         inv.zatca_uuid = remote_id or str(uuid4())
                         inv.status = InvoiceStatus.DONE
@@ -109,18 +109,28 @@ class ZakatService:
         enc_xml = base64.b64encode(xml_bytes).decode("ascii")
         return enc_xml, xml_hash
 
-    async def upload_xml(self, enc_xml: str) -> Tuple[bool, str, str | None]:
+    async def upload_xml(self, enc_xml: str, xml_hash: str, invoice_uuid: str) -> Tuple[bool, str, str | None]:
+        """Upload XML to ZATCA using production service"""
         try:
-            assert Config.ZATCA_ENDPOINT is not None
-            async with httpx.AsyncClient(timeout=30) as client:
-                resp = await client.post(str(Config.ZATCA_ENDPOINT), content=enc_xml)
-                if resp.status_code in (200, 201, 202):
-                    try:
-                        data = resp.json()
-                        remote_id = data.get("uuid") or data.get("id")
-                    except Exception:
-                        remote_id = None
-                    return True, "ok", remote_id
-                return False, f"http {resp.status_code}: {resp.text[:200]}", None
+            # Import here to avoid circular imports
+            from src.services.zatca_production import get_zatca_service
+            
+            zatca_service = get_zatca_service()
+            
+            # Decode the base64 XML
+            xml_bytes = base64.b64decode(enc_xml)
+            xml_str = xml_bytes.decode('utf-8')
+            
+            # Submit to ZATCA
+            result = await zatca_service.submit_invoice(xml_str, xml_hash, invoice_uuid)
+            
+            if result["success"]:
+                return True, result["message"], result["zatca_uuid"]
+            else:
+                error_msg = result.get("error", "Unknown error")
+                if "zatca_errors" in result and result["zatca_errors"]:
+                    error_msg += f" - ZATCA Errors: {result['zatca_errors']}"
+                return False, error_msg, None
+                
         except Exception as e:
             return False, str(e), None
