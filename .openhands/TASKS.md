@@ -18,8 +18,8 @@
 
 9. ✅ Create scripts to fetch data from PostgreSQL and send to Zakat API
 
-10. 🔄 Write comprehensive README files
+10. ✅ Write comprehensive README files
 
-11. ⏳ Create new branch and push changes
+11. ✅ Create new branch and push changes
 
 
